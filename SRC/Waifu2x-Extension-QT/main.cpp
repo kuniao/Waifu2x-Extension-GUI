@@ -1,5 +1,5 @@
 ﻿/*
-    Copyright (C) 2020  Aaron Feng
+    Copyright (C) 2021  Aaron Feng
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as published
@@ -24,7 +24,8 @@
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);//高分辨率屏幕支持
-    QApplication a(argc, argv);
+    QApplication a(argc,argv);
+    a.setQuitOnLastWindowClosed(false);//隐藏无窗口时保持运行
     MainWindow *w = new MainWindow;
     w->show();
     return a.exec();
@@ -32,35 +33,37 @@ int main(int argc, char *argv[])
 
 /*
 Change log:
-v1.73.1:
-- 新特性:为Anime4K引擎加入GPU加速支持.
-- 新特性:安装软件后,首次启动时弹窗让用户选择自己所使用的语言.
-- 更新Anime4K(v1.5.0)
-- 不再允许禁用自动检查更新，但是可以禁用自动更新弹窗，禁用弹窗后将在文本框内显示更新提示.
-- 兼容测试结束后弹窗提示用户查看测试结果.
-- 完善兼容性测试.
+
+v3.31.21-beta:
+- Performance optimization.
+- Update FFmpeg, ImageMagick.
+- Some other improvements.
+
 --------------------------------------------------------------------------
 To do:
-- 多gpu支持
-- 改进剩余时间算法
-- 用python写一个视频的特殊字符路径检测(路径输入到python ext 让他看能不能判断exist)
-- 放大视频时, 判断磁盘空间够不够, 提取十个帧取平均值然后计算用量
+- 添加对"图片文件夹"的支持,一次处理一个文件夹.
+- 改进自动调整引擎设定.
+- 在SRMD和REALSR正式加入cpu支持后, 在GPU ID tooltip上添加[★ "-1" is CPU,others are GPUs ★]
 ---------------------------------------------------------------------------
-完整更新日志:
-
-*/
-
-/*
-Integrated component(In releases):
-- waifu2x-ncnn-vulkan version 20200223
-- Anime4KCPP v1.3.1
-- ffmpeg version 4.2.2
+Integrated component:
 - gifsicle version 1.92
-- Waifu2x-converter version: v5.3.3
-- ImageMagick 7.0.10-6-Q16-x64
 - SoX 14.4.2-win32
-*/
-
-/*
-Icons made by : Freepik (https://www.flaticon.com/authors/freepik) From Flaticon : https://www.flaticon.com/
+- waifu2x-caffe 1.2.0.4
+- Waifu2x-converter 9e0284ae23d43c990efb6320253ff0f1e3776854
+- Waifu2x-NCNN-Vulkan 20210210
+- SRMD-NCNN-Vulkan 20210210
+- RealSR-NCNN-Vulkan 20210210
+- ImageMagick 7.0.11-8-portable-Q16-x64
+- Anime4KCPP v2.5.0
+- FFmpeg 2021-04-20-git-718e03e5f2-full_build
+- NirCmd v2.86
+- Ghostscript 9.53.3
+- GNU Wget 1.20.3
+- rife-ncnn-vulkan 20210227
+- cain-ncnn-vulkan 20210210
+---------------------------------------------------------------------------
+Icons made by :
+Freepik (https://www.flaticon.com/authors/freepik) From Flaticon : https://www.flaticon.com/
+Roundicons (https://www.flaticon.com/authors/roundicons) From Flaticon : https://www.flaticon.com/
+Icongeek26 (https://www.flaticon.com/authors/Icongeek26) From Flaticon : https://www.flaticon.com/
 */

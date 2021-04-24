@@ -1,4 +1,4 @@
-#    Copyright (C) 2020  Aaron Feng
+#    Copyright (C) 2021  Aaron Feng
 
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -36,31 +36,46 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Anime4K.cpp \
+    CompatibilityTest.cpp \
+    Current_File_Progress.cpp \
     CustomResolution.cpp \
+    Donate.cpp \
+    Finish_Action.cpp \
+    Frame_Interpolation.cpp \
+    Right-click_Menu.cpp \
+    SystemTrayIcon.cpp \
+    Web_Activities.cpp \
     checkupdate.cpp \
     files.cpp \
     gif.cpp \
+    image.cpp \
     main.cpp \
     mainwindow.cpp \
     progressBar.cpp \
+    realsr_ncnn_vulkan.cpp \
     settings.cpp \
+    srmd-cuda.cpp \
     srmd_ncnn_vulkan.cpp \
     table.cpp \
     textBrowser.cpp \
+    topsupporterslist.cpp \
     video.cpp \
     waifu2x.cpp \
+    waifu2x_caffe.cpp \
     waifu2x_converter.cpp \
     waifu2x_ncnn_vulkan.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    topsupporterslist.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    topsupporterslist.ui
 
 TRANSLATIONS += language_English.ts \
                language_Chinese.ts \
-               language_Japanese.ts
+               language_TraditionalChinese.ts
 
 TARGET = Waifu2x-Extension-GUI
 
@@ -70,9 +85,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
+    OtherPic.qrc \
     donate.qrc \
     icon.qrc
 
 RC_ICONS =icon/icon.ico
-
-

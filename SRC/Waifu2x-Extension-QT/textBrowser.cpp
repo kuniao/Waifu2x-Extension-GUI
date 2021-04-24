@@ -1,5 +1,5 @@
 ﻿/*
-    Copyright (C) 2020  Aaron Feng
+    Copyright (C) 2021  Aaron Feng
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as published
@@ -19,22 +19,36 @@
 
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+/*
+在文本框内输出一条新消息
+*/
 void MainWindow::TextBrowser_NewMessage(QString message)
 {
-    QDateTime time = QDateTime::currentDateTime();
-    QString Current_Time = time.toString("[yyyy-MM-dd hh:mm:ss]");
+    QString Current_Time = QDateTime::currentDateTime().toString("[yyyy-MM-dd hh:mm:ss]");
     QString OutPutStr = Current_Time+" "+message;
     ui->textBrowser->append(OutPutStr);
     ui->textBrowser->moveCursor(QTextCursor::End);
 }
-
+/*
+输出文本框的欢迎消息
+启动时显示
+*/
 void MainWindow::TextBrowser_StartMes()
 {
+    QString CurrentVerState="";
+    if(isBetaVer)
+    {
+        CurrentVerState=tr("[Beta]");
+    }
+    else
+    {
+        CurrentVerState=tr("[Stable]");
+    }
+    //====
     ui->textBrowser->append("Waifu2x-Extension-GUI by Aaron Feng");
-    ui->textBrowser->append(tr("Version:")+" "+VERSION);
+    ui->textBrowser->append(tr("Version:")+" "+VERSION+" "+CurrentVerState);
     ui->textBrowser->append("Github: https://github.com/AaronFeng753/Waifu2x-Extension-GUI");
-    ui->textBrowser->append(tr("If you like this software, please donate to support the developer, thank you!"));
-    ui->textBrowser->append("---------");
+    if(ui->comboBox_language->currentIndex()==1)ui->textBrowser->append("码云: https://gitee.com/aaronfeng0711/Waifu2x-Extension-GUI");
+    ui->textBrowser->append(tr("Please donate to support the developers, so we can bring further updates for this software, thank you! (｡･∀･)ﾉﾞ"));
     ui->textBrowser->moveCursor(QTextCursor::End);
 }
